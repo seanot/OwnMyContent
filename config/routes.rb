@@ -1,6 +1,8 @@
 OwnMyContent::Application.routes.draw do
 
   root 'users#index'
+  resources :feeds
+
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   # get "/logout" => "sessions#destroy"
@@ -9,7 +11,7 @@ OwnMyContent::Application.routes.draw do
   ####for db oauth:
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
-##### end oauth   
+##### end oauth
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

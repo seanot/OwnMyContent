@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20131018163431) do
 
   create_table "users", force: true do |t|
     t.string   "provider"
+    t.string   "email"
     t.integer  "uid"
     t.string   "name"
     t.string   "oauth_token"

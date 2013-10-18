@@ -7,10 +7,16 @@ class FeedsController < ApplicationController
 
   def new
   end
+
 # 'http://feeds.feedburner.com/eatthishotshow'
   def create
     p params[:url]
-    @feed = open(params[:url]).read
+    xml= open(params[:url])
+    feed = FeedzirraPodcast::Parser::Podcast.parse(xml)
+    @info = []
+    feed.items.each do |i|
+      @info << i.enclosure_url
+    end
     render :test_view
   end
 

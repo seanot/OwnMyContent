@@ -45,6 +45,10 @@ group :production do
 end
 
 gem "feedzirra-podcast", "~> 0.0.9"
+gem 'dotenv-rails'
+# gem 'dropbox-sdk'
+gem 'omniauth'
+gem 'omniauth-dropbox-oauth2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

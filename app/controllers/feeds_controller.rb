@@ -15,13 +15,9 @@ class FeedsController < ApplicationController
     feed = FeedzirraPodcast::Parser::Podcast.parse(xml)
     @info = []
     feed.items.each do |i|
-      @info << i.enclosure_url
+      @info << i.enclosure.url
     end
     render :test_view
   end
 
 end
-
-# user_id
-# rss_url
-# fields_to_keep

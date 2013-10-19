@@ -1,3 +1,5 @@
+<%= link_to "see your feeds", feeds_path%>
+
 <%= form_for @feed, url: feeds_path do |f| %>
 <label for="url">Enter the RSS feed you want to save: </label>
   <%= f.url_field 'url' %>

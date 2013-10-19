@@ -22,7 +22,12 @@ class FeedsController < ApplicationController
       feed_info.enclosures.create({url: url})
       @info << url
     end
-    render :test_view
+    redirect_to feed_path(feed_info)
+  end
+
+  def show
+    @feed = Feed.find(params[:id])
+    @info = @feed.enclosures
   end
 
   private

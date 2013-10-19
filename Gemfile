@@ -50,6 +50,8 @@ gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-dropbox-oauth2'
 
+gem 'ruby-mp3info'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

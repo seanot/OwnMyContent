@@ -1,0 +1,6 @@
+<h1>Your Casts</h1>
+<ul>
+  <%= current_user.feeds.each do |feed| %>
+    <li><%= feed.title %></li>
+  <% end %>
+</ul>

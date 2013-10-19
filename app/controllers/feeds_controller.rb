@@ -1,6 +1,8 @@
 require 'open-uri'
 
 class FeedsController < ApplicationController
+  include SessionsHelper
+
   def index
 
   end
@@ -11,6 +13,7 @@ class FeedsController < ApplicationController
 
 # 'http://feeds.feedburner.com/eatthishotshow'
   def create
+    current_user
     xml = open(feed_params[:url])
     feed = FeedzirraPodcast::Parser::Podcast.parse(xml)
     @info = []

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
-  
 
-  
+
+
 end

@@ -13,12 +13,14 @@ class FeedsController < ApplicationController
 
 # 'http://feeds.feedburner.com/eatthishotshow'
   def create
-    current_user
+    feed_info = current_user.feeds.create(feed_params)
     xml = open(feed_params[:url])
     feed = FeedzirraPodcast::Parser::Podcast.parse(xml)
     @info = []
     feed.items.each do |i|
-      @info << i.enclosure.url
+      url = i.enclosure.url
+      feed_info.enclosures.create({url: url})
+      @info << url
     end
     render :test_view
   end

@@ -16,15 +16,15 @@ ActiveRecord::Schema.define(version: 20131019003456) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "feeds", force: true do |t|
-    t.integer "user_id"
-    t.string  "title"
+  create_table "enclosures", force: true do |t|
+    t.integer "feed_id"
+    t.string  "media_type"
     t.string  "url"
   end
 
-  create_table "files", force: true do |t|
-    t.integer "feed_id"
-    t.string  "media_type"
+  create_table "feeds", force: true do |t|
+    t.integer "user_id"
+    t.string  "title"
     t.string  "url"
   end
 

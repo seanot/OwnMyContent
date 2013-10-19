@@ -1,6 +1,6 @@
-class CreateFiles < ActiveRecord::Migration
+class CreateEnclosures < ActiveRecord::Migration
   def change
-    create_table :files do |t|
+    create_table :enclosures do |t|
       t.integer :feed_id
       t.string :media_type
       t.string :url

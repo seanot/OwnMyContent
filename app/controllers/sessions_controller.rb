@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to root_url
+    redirect_to new_feed_path
   end
   # def create
   #   @user = User.find_by(email: params[:email])
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to :root 
+    redirect_to :root
   end
 
 

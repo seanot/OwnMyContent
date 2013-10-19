@@ -46,7 +46,7 @@ end
 
 gem "feedzirra-podcast", "~> 0.0.9"
 gem 'dotenv-rails'
-gem 'dropbox-sdk'
+# gem 'dropbox-sdk'
 gem 'omniauth'
 gem 'omniauth-dropbox-oauth2'
 

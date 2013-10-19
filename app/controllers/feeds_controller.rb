@@ -31,9 +31,15 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find(params[:id])
     @info = @feed.enclosures
-    open('test-save.html', 'wb') do |f|
-      f << (render_to_string :show)
-    end
+
+
+    # When we start creating directories for user files,
+    # uncomment this and change the filepath to the
+    # path where we're staging files to send to dropbox
+
+    # open("#{filepath}/directory.html", 'wb') do |f|
+    #   f << (render_to_string :show)
+    # end
   end
 
   private

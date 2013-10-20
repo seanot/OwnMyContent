@@ -17,4 +17,16 @@ class Enclosure < ActiveRecord::Base
     File.new(self.server_path).size
   end
 
+  def upload_to_dropbox!
+    UploadWorker.perform_async(self.id)
+  end
+
+  def user
+    self.feed.user
+  end
+
+  def upload?
+    self.upload_status == 'pending' || self.upload_status == 'waiting to retry'
+  end
+
 end

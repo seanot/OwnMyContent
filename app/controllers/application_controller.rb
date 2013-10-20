@@ -1,7 +1,8 @@
-require 'dropbox_sdk'
-
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
+  require 'dropbox_sdk'
+  require 'open-uri'
 
   include SessionsHelper
   include DropboxHelper

@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def server_path
+    "public/user_content/#{self.id}"
+  end
+
+  def client_path
+    ""
+  end
+
 
 
 end

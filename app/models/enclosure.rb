@@ -10,5 +10,16 @@ require 'open-uri'
     end
   end
 
+  def server_path
+    "#{self.feed.server_path}/#{self.id}"
+  end
+
+  def file_name
+    self.url.split('/').last
+  end
+
+  def client_path
+    "#{self.feed.client_path}/#{self.file_name}"
+  end
 
 end

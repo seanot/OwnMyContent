@@ -66,13 +66,6 @@ class Enclosure < ActiveRecord::Base
   #   end
   # end
 
-  def save_to_server
-    directory_name = ("#{self.feed.server_path}")
-    FileUtils.mkdir_p(directory_name) unless File.exists?(directory_name)
-    open("#{directory_name}/#{self.id}", 'wb') do |f|
-       f << open("#{self.url}").read
-    end
-  end
 
   def server_path
     "#{self.feed.server_path}/#{self.id}"
@@ -86,6 +79,22 @@ class Enclosure < ActiveRecord::Base
     "#{self.feed.client_path}/#{self.file_name}"
   end
 
+  # =======================================
+  # Download utilities
+  # =====================================
+  def make_server_directory!
+    directory_name = ("#{self.feed.server_path}")
+    FileUtils.mkdir_p(directory_name) unless File.exists?(directory_name)
+  end
+
+  def save_to_server
+    make_server_directory!
+    DownloadWorker.perform_async(self.id)
+  end
+
+  # =================================
+  # Upload utilities
+  # =================================
   def size
     File.new(self.server_path).size
   end

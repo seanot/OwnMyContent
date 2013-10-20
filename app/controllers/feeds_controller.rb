@@ -1,7 +1,6 @@
 require 'open-uri'
 
 class FeedsController < ApplicationController
-  include SessionsHelper
 
   def index
 
@@ -40,6 +39,10 @@ class FeedsController < ApplicationController
     # open("#{filepath}/directory.html", 'wb') do |f|
     #   f << (render_to_string :show)
     # end
+  end
+
+  def save_test
+
   end
 
   private

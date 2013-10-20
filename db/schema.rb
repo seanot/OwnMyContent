@@ -11,15 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019003456) do
+ActiveRecord::Schema.define(version: 20131020002447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "enclosures", force: true do |t|
-    t.integer "feed_id"
-    t.string  "media_type"
-    t.string  "url"
+    t.integer  "feed_id"
+    t.string   "media_type"
+    t.string   "url"
+    t.string   "title"
+    t.string   "artist"
+    t.string   "album"
+    t.string   "year"
+    t.text     "comm"
+    t.string   "tcom"
+    t.string   "tcon"
+    t.string   "tcop"
+    t.text     "tit2"
+    t.text     "tit3"
+    t.string   "tcat"
+    t.string   "trck"
+    t.string   "tyer"
+    t.string   "tgid"
+    t.string   "wfed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "feeds", force: true do |t|

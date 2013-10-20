@@ -29,7 +29,7 @@ class FeedsController < ApplicationController
 
   def show
     @feed = Feed.find(params[:id])
-    @info = @feed.enclosures
+    @enclosures = @feed.enclosures
 
 
     # When we start creating directories for user files,

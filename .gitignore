@@ -16,4 +16,8 @@
 /tmp
 .DS_Store
 .env
+
+sean.rake
+
+
 /public/user_content

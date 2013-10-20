@@ -2,6 +2,7 @@ class Feed < ActiveRecord::Base
   belongs_to :user
   has_many :enclosures
 
+
   def server_path
     "#{self.user.server_path}/#{self.id}"
   end

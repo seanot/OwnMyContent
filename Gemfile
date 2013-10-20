@@ -57,6 +57,7 @@ gem 'omniauth-dropbox-oauth2'
 
 gem 'ruby-mp3info'
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -68,3 +69,4 @@ gem 'ruby-mp3info'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'pry'

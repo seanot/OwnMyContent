@@ -13,4 +13,8 @@ class Enclosure < ActiveRecord::Base
     "#{self.feed.client_path}/#{self.file_name}"
   end
 
+  def size
+    File.new(self.server_path).size
+  end
+
 end

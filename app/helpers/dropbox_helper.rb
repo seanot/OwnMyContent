@@ -5,8 +5,10 @@ module DropboxHelper
   end
 
   def upload_enclosure!(enc)
-    msg = dbx_client.put_file(enc.client_path, enc.server_path)
-    puts msg
+    enclosure_file = open(enc.client_path)
+    uploader = DropboxboxClient::ChunkedUploader.new(dbx_client, enclosure_file, enc.size)
+    uploader.upload
+    msg = uploader.finish(enc.server_path)
   end
 
 end

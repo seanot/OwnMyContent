@@ -11,4 +11,10 @@ class Feed < ActiveRecord::Base
     "#{self.user.client_path}/#{self.title}"
   end
 
+  def upload_to_dropbox!
+    self.enclosures.each do |enc|
+      enc.upload_to_dropbox! if enc.upload?
+    end
+  end
+
 end

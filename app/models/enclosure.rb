@@ -25,4 +25,8 @@ class Enclosure < ActiveRecord::Base
     self.feed.user
   end
 
+  def upload?
+    self.upload_status == 'pending' || self.upload_status == 'waiting to retry'
+  end
+
 end

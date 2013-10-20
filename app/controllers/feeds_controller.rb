@@ -42,7 +42,7 @@ class FeedsController < ApplicationController
   end
 
   def save_test
-
+    upload_enclosure!(Feed.find(7).enclosures[3])
   end
 
   private

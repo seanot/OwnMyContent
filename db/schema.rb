@@ -17,10 +17,27 @@ ActiveRecord::Schema.define(version: 20131020182746) do
   enable_extension "plpgsql"
 
   create_table "enclosures", force: true do |t|
-    t.integer "feed_id"
-    t.string  "media_type"
-    t.string  "url"
-    t.string  "upload_status"
+    t.integer  "feed_id"
+    t.string   "media_type"
+    t.string   "url"
+    t.string   "title"
+    t.string   "artist"
+    t.string   "album"
+    t.string   "year"
+    t.text     "comm"
+    t.string   "tcom"
+    t.string   "tcon"
+    t.string   "tcop"
+    t.text     "tit2"
+    t.text     "tit3"
+    t.string   "tcat"
+    t.string   "trck"
+    t.string   "tyer"
+    t.string   "tgid"
+    t.string   "wfed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "upload_status"
   end
 
   create_table "feeds", force: true do |t|

@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  add_flash_types :error, :notice
+
   require 'dropbox_sdk'
   require 'open-uri'
+
 
   include SessionsHelper
   include DropboxHelper

@@ -18,3 +18,4 @@
 .env
 sean.rake
 ./.env
+/public/user_content

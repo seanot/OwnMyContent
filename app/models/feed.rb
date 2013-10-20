@@ -17,4 +17,10 @@ class Feed < ActiveRecord::Base
     end
   end
 
+  def download_enclosures!
+    self.enclosures.each do |enc|
+      enc.save_to_server
+    end
+  end
+
 end

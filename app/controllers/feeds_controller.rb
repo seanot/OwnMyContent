@@ -23,9 +23,7 @@ class FeedsController < ApplicationController
       feed_info.enclosures.create({ url: url}) if url
     end
 
-    feed_info.enclosures.each do |enc|
-      enc.save_to_server
-    end
+    feed_info.download_enclosures!
 
     redirect_to feed_path(feed_info)
   end

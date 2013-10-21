@@ -39,24 +39,29 @@ class Enclosure < ActiveRecord::Base
   # Download utilities
   # =====================================
   def extract_metadata!
-    Mp3Info.open(self.server_path) do |mp3|
-      self.title = mp3.tag.title
-      self.artist = mp3.tag.artist
-      self.album = mp3.tag.album
-      self.year = mp3.tag.year
-      self.comm = mp3.tag2.comm
-      self.tcom = mp3.tag2.tcom
-      self.tcon = mp3.tag2.tcon
-      self.tcop = mp3.tag2.tcop
-      self.tit2 = mp3.tag2.tit2
-      self.tit3 = mp3.tag2.tit3
-      self.tcat = mp3.tag2.tcat
-      self.trck = mp3.tag2.trck
-      self.tyer = mp3.tag2.tyer
-      self.tgid = mp3.tag2.tgid
-      self.wfed = mp3.tag2.wfed
+    unless self.title
+      Mp3Info.open(self.server_path) do |mp3|
+        self.title = mp3.tag.title
+        self.artist = mp3.tag.artist
+        self.album = mp3.tag.album
+        self.year = mp3.tag.year
+        self.comm = mp3.tag2.comm
+        self.tcom = mp3.tag2.tcom
+        self.tcon = mp3.tag2.tcon
+        self.tcop = mp3.tag2.tcop
+        self.tit2 = mp3.tag2.tit2
+        self.tit3 = mp3.tag2.tit3
+        self.tcat = mp3.tag2.tcat
+        self.trck = mp3.tag2.trck
+        self.tyer = mp3.tag2.tyer
+        self.tgid = mp3.tag2.tgid
+        self.wfed = mp3.tag2.wfed
+      end
+
+      self.title = "Untitled" unless self.title
+
+      self.save
     end
-    self.save
   end
 
   def make_server_directory!

@@ -98,7 +98,7 @@ class Enclosure < ActiveRecord::Base
   end
 
   # =================================
-  # Upon Create
+  # Upon Save
   # =================================
 
   def post_save

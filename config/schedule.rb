@@ -5,7 +5,16 @@
 
 # Example:
 #
-set :output, "/config/cron_log.log"
+set :output, "config/cron_log.log"
+
+every 1.hour do
+  rake "enc:check"
+end
+
+every 1.minute do
+    rake "enc:test"
+end
+
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"

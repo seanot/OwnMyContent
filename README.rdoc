@@ -3,6 +3,22 @@ http://rdoc.info/github/moumar/ruby-mp3info/master/frames
 
 
 
+
+whenever is for scheduling cron jobs:
+Usage: whenever [options]
+    -i [identifier],                 Default: full path to schedule.rb file
+        --update-crontab
+    -w, --write-crontab [identifier] Default: full path to schedule.rb file
+    -c, --clear-crontab [identifier]
+    -s, --set [variables]            Example: --set 'environment=staging&path=/my/sweet/path'
+    -f, --load-file [schedule file]  Default: config/schedule.rb
+    -u, --user [user]                Default: current user
+    -k, --cut [lines]                Cut lines from the top of the cronfile
+    -r, --roles [role1,role2]        Comma-separated list of server roles to generate cron jobs for
+    -v, --version
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the

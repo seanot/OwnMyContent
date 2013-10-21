@@ -4,7 +4,16 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/css3";
+@import "web-fonts";
+@include web-font((Karla));
 
+
+ 
 body {
-  background: #6dd6a4;
+  
+}
+
+#user-widget {
+  font-family: "Karla"
 }

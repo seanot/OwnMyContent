@@ -1,6 +1,14 @@
 <h3><%= @feed.title %></h3>
 <ul>
-<% @info.each do |i| %>
-  <li><a href='<%= i.url %>'><%= i.url %></a></li>
+<% @enclosures.each do |enc| %>
+  <li>
+    <a href='<%= enc.url %>'>
+      <%= enc.client_path %>
+    </a>
+    server path: <%= enc.server_path %>
+    <% if  enc.upload_status %>
+      Status: <%= enc.upload_status %>
+    <% end %>
+  </li>
 <% end %>
 </ul>

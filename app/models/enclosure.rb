@@ -5,8 +5,15 @@ class Enclosure < ActiveRecord::Base
   require 'mp3info'
   require 'fileutils'
 
+
   after_create :save_to_server!
   after_save :post_save
+
+  METADATA_FIELDS = [
+        :media_type, :title, :artist, :album,
+        :year, :comm, :tcom, :tcon, :tcop,
+        :tit2, :tit3, :tcat, :trck, :tyer,
+        :tgid, :wfed]
 
   def server_path
     "#{self.feed.server_path}/#{self.id}"
@@ -18,6 +25,14 @@ class Enclosure < ActiveRecord::Base
 
   def client_path
     "#{self.feed.client_path}/#{self.file_name}"
+  end
+
+  def metadata
+    info = {}
+    METADATA_FIELDS.each do |field|
+      info[field] = self[field] if self[field]
+    end
+    info
   end
 
   # =======================================

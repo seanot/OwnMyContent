@@ -2,13 +2,16 @@
 <ul>
 <% @enclosures.each do |enc| %>
   <li>
-    <a href='<%= enc.client_path %>'>
+    <p><a href='<%= enc.client_path %>'>
       <%= enc.title %>
     </a>
-    (<%= enc.client_path %>)
-    <% if  enc.upload_status %>
-      Status: <%= enc.upload_status %>
-    <% end %>
+    (<%= enc.client_path %>)</p>
+    <p class='metadata'>
+      <% enc.metadata.each do |field, val| %>
+        <%= field %>: <%= val %> |
+      <% end %>
+    </p>
+
   </li>
 <% end %>
 </ul>

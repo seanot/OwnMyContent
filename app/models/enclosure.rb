@@ -108,8 +108,7 @@ class Enclosure < ActiveRecord::Base
       elsif upload_status == "started"
         self.extract_metadata!
       elsif upload_status == "complete"
-        puts "Enclosure #{self.id} completed upload; time to delete from the server."
-        # self.delete_from_server!
+        self.delete_from_server!
       end
     end
   end

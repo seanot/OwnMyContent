@@ -24,14 +24,20 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Sidekiq will use Redis for background jobs
+gem 'sidekiq'
+gem 'redis'
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-group :test do
+group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
+  gem 'factory_girl_rails'
   gem 'coveralls', require: false
 end
 
@@ -48,11 +54,12 @@ end
 
 gem "feedzirra-podcast", "~> 0.0.9"
 gem 'dotenv-rails'
-# gem 'dropbox-sdk'
+gem 'dropbox-sdk'
 gem 'omniauth'
 gem 'omniauth-dropbox-oauth2'
 
 gem 'ruby-mp3info'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -65,3 +72,4 @@ gem 'ruby-mp3info'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'pry'

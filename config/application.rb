@@ -9,6 +9,11 @@ require "sprockets/railtie"
 require "sass-rails"
 require "compass-rails"
 
+# Changes factories directory to accomodate rspec.
+# config.generators do |g|
+#   g.factory_girl dir: 'custom/dir/for/factories'
+# end
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)

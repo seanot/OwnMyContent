@@ -37,7 +37,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
     chunky_png (1.2.9)
+    coderay (1.0.9)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -51,6 +54,7 @@ GEM
       sass (~> 3.1)
     compass-rails (2.0.alpha.0)
       compass (>= 0.12.2, < 0.14)
+    connection_pool (1.1.0)
     coveralls (0.7.0)
       multi_json (~> 1.3)
       rest-client
@@ -62,8 +66,15 @@ GEM
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
+    dropbox-sdk (1.6.2)
+      json
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     feedzirra (0.2.1)
@@ -94,6 +105,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25)
     mini_portile (0.5.1)
     minitest (4.7.5)
@@ -118,6 +130,10 @@ GEM
     periodic (1.2.2)
     pg (0.17.0)
     polyglot (0.3.3)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -143,6 +159,9 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.0.5)
+    redis-namespace (1.3.1)
+      redis (~> 3.0.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (2.14.6)
@@ -167,10 +186,17 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
+    sidekiq (2.15.2)
+      celluloid (>= 0.15.2)
+      connection_pool (>= 1.0.0)
+      json
+      redis (>= 3.0.4)
+      redis-namespace (>= 1.3.1)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -186,6 +212,7 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+    timers (1.1.0)
     tins (0.12.0)
     treetop (1.4.15)
       polyglot
@@ -213,18 +240,23 @@ DEPENDENCIES
   compass-rails (~> 2.0.alpha.0)
   coveralls
   dotenv-rails
+  dropbox-sdk
+  factory_girl_rails
   feedzirra-podcast (~> 0.0.9)
   jbuilder (~> 1.2)
   jquery-rails
   omniauth
   omniauth-dropbox-oauth2
   pg
+  pry
   rails (= 4.0.0)
   rails_12factor
+  redis
   rspec-rails (~> 2.0)
   ruby-mp3info
   sass-rails (~> 4.0.0)
   sdoc
+  sidekiq
   turbolinks
   uglifier (>= 1.3.0)
   unicorn

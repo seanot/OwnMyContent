@@ -1,7 +1,7 @@
 require 'open-uri'
+require 'mp3info'
 
 class FeedsController < ApplicationController
-  include SessionsHelper
 
   def index
 
@@ -11,26 +11,34 @@ class FeedsController < ApplicationController
     @feed = Feed.new
   end
 
-# 'http://feeds.feedburner.com/eatthishotshow'
-# http://feeds2.feedburner.com/talpodcast
   def create
     feed_info = current_user.feeds.create(feed_params)
     xml = open(feed_params[:url])
     feed = FeedzirraPodcast::Parser::Podcast.parse(xml)
     feed_info.update_attribute(:title, feed.title)
 
-    @info = []
     feed.items.each do |i|
       url = i.enclosure.url
-      feed_info.enclosures.create({url: url})
-      @info << url
+      @url = url
+
+      if url
+        feed_info.enclosures.create({ url: url})
+
+      end
     end
+
+    feed_info.enclosures.each do |enc|
+      enc.save_to_server
+      enc.extract_metadata
+      enc.upload_to_dropbox!
+    end
+
     redirect_to feed_path(feed_info)
   end
 
   def show
     @feed = Feed.find(params[:id])
-    @info = @feed.enclosures
+    @enclosures = @feed.enclosures
 
 
     # When we start creating directories for user files,
@@ -40,6 +48,10 @@ class FeedsController < ApplicationController
     # open("#{filepath}/directory.html", 'wb') do |f|
     #   f << (render_to_string :show)
     # end
+  end
+
+  def save_test
+
   end
 
   private

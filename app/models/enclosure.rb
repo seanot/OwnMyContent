@@ -5,6 +5,12 @@ class Enclosure < ActiveRecord::Base
   require 'mp3info'
   require 'fileutils'
 
+  METADATA_FIELDS = [
+        :media_type, :title, :artist, :album,
+        :year, :comm, :tcom, :tcon, :tcop,
+        :tit2, :tit3, :tcat, :trck, :tyer,
+        :tgid, :wfed]
+
   # def self.download_feed(info)
   #   info.each do |i|
   #     @filename = i.url
@@ -65,6 +71,15 @@ class Enclosure < ActiveRecord::Base
   #      f << open(@file).read
   #   end
   # end
+
+  def metadata
+    info = {}
+    METADATA_FIELDS.each do |field|
+      info[field] = self[field] if self[field]
+    end
+    info
+  end
+
 
   def save_to_server
     directory_name = ("#{self.feed.server_path}")

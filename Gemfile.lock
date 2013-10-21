@@ -61,6 +61,11 @@ GEM
       json
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     feedzirra (0.2.1)
@@ -227,6 +232,7 @@ DEPENDENCIES
   coveralls
   dotenv-rails
   dropbox-sdk
+  factory_girl_rails
   feedzirra-podcast (~> 0.0.9)
   jbuilder (~> 1.2)
   jquery-rails

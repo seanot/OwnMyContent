@@ -30,6 +30,7 @@ class FeedsController < ApplicationController
     feed_info.enclosures.each do |enc|
       enc.save_to_server
       enc.extract_metadata
+      enc.upload_to_dropbox!
     end
 
     redirect_to feed_path(feed_info)
@@ -37,7 +38,7 @@ class FeedsController < ApplicationController
 
   def show
     @feed = Feed.find(params[:id])
-    @info = @feed.enclosures
+    @enclosures = @feed.enclosures
 
 
     # When we start creating directories for user files,

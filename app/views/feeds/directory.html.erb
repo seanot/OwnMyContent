@@ -1,0 +1,18 @@
+<h3><%= @feed.title %></h3>
+<ul>
+<% @enclosures.each do |enc| %>
+  <li>
+    <p><a href='<%= enc.client_path %>'>
+      <%= enc.title %>
+      </a>
+      <span class='path'>(<%= enc.client_path %>)</span>
+    </p>
+    <p class='metadata'>
+      <% enc.metadata.each do |field, val| %>
+        <%= field %>: <%= val %> |
+      <% end %>
+    </p>
+
+  </li>
+<% end %>
+</ul>

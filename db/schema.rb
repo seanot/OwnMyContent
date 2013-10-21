@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20131020182746) do
     t.integer  "feed_id"
     t.string   "media_type"
     t.string   "url"
-    t.string   "upload_status"
     t.string   "title"
     t.string   "artist"
     t.string   "album"
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(version: 20131020182746) do
     t.string   "wfed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "upload_status"
   end
 
   create_table "feeds", force: true do |t|

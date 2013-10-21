@@ -62,6 +62,9 @@ gem 'omniauth-dropbox-oauth2'
 
 gem 'ruby-mp3info'
 
+#for using cron with sideqik
+gem 'whenever', :require => false
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -3,6 +3,14 @@ http://rdoc.info/github/moumar/ruby-mp3info/master/frames
 
 
 
+
+to start the cron jobs:
+whenever -w --set 'environment=development'
+to stop;
+whenever -c
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the

@@ -4,8 +4,9 @@
   <li>
     <p><a href='<%= enc.client_path %>'>
       <%= enc.title %>
-    </a>
-    (<%= enc.client_path %>)</p>
+      </a>
+      <span class='path'>(<%= enc.client_path %>)</span>
+    </p>
     <p class='metadata'>
       <% enc.metadata.each do |field, val| %>
         <%= field %>: <%= val %> |

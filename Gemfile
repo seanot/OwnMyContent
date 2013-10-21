@@ -42,7 +42,7 @@ end
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
-  gem 'compass-rails'
+  gem "compass-rails", "~> 2.0.alpha.0"
 end
 
 gem "feedzirra-podcast", "~> 0.0.9"

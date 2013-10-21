@@ -21,3 +21,4 @@ sean.rake
 
 
 /public/user_content
+/config/cron_log.log

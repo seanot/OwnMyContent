@@ -30,6 +30,7 @@ class FeedsController < ApplicationController
     feed_info.enclosures.each do |enc|
       enc.save_to_server
       enc.extract_metadata
+      enc.upload_to_dropbox!
     end
 
     redirect_to feed_path(feed_info)

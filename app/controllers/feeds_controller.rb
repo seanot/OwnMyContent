@@ -19,11 +19,18 @@ class FeedsController < ApplicationController
 
     feed.items.each do |i|
       url = i.enclosure.url
-      # file = open(url).read if url
-      feed_info.enclosures.create({ url: url}) if url
+      @url = url
+
+      if url
+        feed_info.enclosures.create({ url: url})
+
+      end
     end
 
-    feed_info.download_enclosures!
+    feed_info.enclosures.each do |enc|
+      enc.save_to_server
+      enc.extract_metadata
+    end
 
     redirect_to feed_path(feed_info)
   end

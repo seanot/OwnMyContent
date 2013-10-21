@@ -5,66 +5,27 @@ class Enclosure < ActiveRecord::Base
   require 'mp3info'
   require 'fileutils'
 
-  # def self.download_feed(info)
-  #   info.each do |i|
-  #     @filename = i.url
-  #     extract_metadata(@filename)
-  #     save_file
-  #   end
-  # end
 
-  # def extract_metadata(file)
-  #   @file = open(file).read
-  #   Mp3Info.open(@file) do |mp3|
-  #     @title = mp3.tag.title
-  #     @artist = mp3.tag.artist
-  #     @album = mp3.tag.album
-  #     @year = mp3.tag.year
-  #     @comm = mp3.tag2.comm
-  #     @tcom = mp3.tag2.tcom
-  #     @tcon = mp3.tag2.tcon
-  #     @tcop = mp3.tag2.tcop
-  #     @tit2 = mp3.tag2.tit2
-  #     @tit3 = mp3.tag2.tit3
-  #     @tcat = mp3.tag2.tcat
-  #     @trck = mp3.tag2.trck
-  #     @tyer = mp3.tag2.tyer
-  #     @tgid = mp3.tag2.tgid
-  #     @wfed = mp3.tag2.wfed
-  #   end
-  # end
-
-  # def create_enclosure_entry
-  #   enc = Enclosure.new(
-  #                       media_type: 'mp3',
-  #                       title: @title,
-  #                       artist: @artist,
-  #                       album: @album,
-  #                       year: @year,
-  #                       comm: @comm,
-  #                       tcom: @tcom,
-  #                       tcon: @tcon,
-  #                       tcop: @tcop,
-  #                       tit2: @tit2,
-  #                       tit3: @tit3,
-  #                       tcat: @tcat,
-  #                       trck: @trck,
-  #                       tyer: @tyer,
-  #                       tgid: @tgid,
-  #                       wfed: @wfed
-  #                       )
-  #   if enc.save
-  #     # notice: 'temporary message database entry successful'
-  #   else
-  #     # error: 'temporary message database entry failed'
-  #   end
-  # end
-
-  # def save_file
-  #   open("#{self.server_path}/#{@filename}", 'wb') do |f|
-  #      f << open(@file).read
-  #   end
-  # end
+  def extract_metadata
+    Mp3Info.open(self.server_path) do |mp3|
+      self.title = mp3.tag.title
+      self.artist = mp3.tag.artist
+      self.album = mp3.tag.album
+      self.year = mp3.tag.year
+      self.comm = mp3.tag2.comm
+      self.tcom = mp3.tag2.tcom
+      self.tcon = mp3.tag2.tcon
+      self.tcop = mp3.tag2.tcop
+      self.tit2 = mp3.tag2.tit2
+      self.tit3 = mp3.tag2.tit3
+      self.tcat = mp3.tag2.tcat
+      self.trck = mp3.tag2.trck
+      self.tyer = mp3.tag2.tyer
+      self.tgid = mp3.tag2.tgid
+      self.wfed = mp3.tag2.wfed
+    end
+    self.save
+  end
 
 
   def server_path

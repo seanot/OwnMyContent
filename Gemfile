@@ -6,12 +6,8 @@ gem 'rails', '4.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
@@ -42,6 +38,11 @@ end
 group :production do
   gem 'rails_12factor' # for heroku
   gem 'unicorn' # web server
+end
+
+group :assets do
+  gem 'sass-rails', '~> 4.0.0'
+  gem 'compass-rails'
 end
 
 gem "feedzirra-podcast", "~> 0.0.9"

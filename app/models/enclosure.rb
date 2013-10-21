@@ -5,8 +5,25 @@ class Enclosure < ActiveRecord::Base
   require 'mp3info'
   require 'fileutils'
 
+  after_create :save_to_server!
+  after_save :post_save
 
-  def extract_metadata
+  def server_path
+    "#{self.feed.server_path}/#{self.id}"
+  end
+
+  def file_name
+    self.url.split('/').last
+  end
+
+  def client_path
+    "#{self.feed.client_path}/#{self.file_name}"
+  end
+
+  # =======================================
+  # Download utilities
+  # =====================================
+  def extract_metadata!
     Mp3Info.open(self.server_path) do |mp3|
       self.title = mp3.tag.title
       self.artist = mp3.tag.artist
@@ -27,28 +44,12 @@ class Enclosure < ActiveRecord::Base
     self.save
   end
 
-
-  def server_path
-    "#{self.feed.server_path}/#{self.id}"
-  end
-
-  def file_name
-    self.url.split('/').last
-  end
-
-  def client_path
-    "#{self.feed.client_path}/#{self.file_name}"
-  end
-
-  # =======================================
-  # Download utilities
-  # =====================================
   def make_server_directory!
-    directory_name = ("#{self.feed.server_path}")
+    directory_name = self.feed.server_path
     FileUtils.mkdir_p(directory_name) unless File.exists?(directory_name)
   end
 
-  def save_to_server
+  def save_to_server!
     make_server_directory!
     DownloadWorker.perform_async(self.id)
   end
@@ -60,16 +61,28 @@ class Enclosure < ActiveRecord::Base
     File.new(self.server_path).size
   end
 
-  def upload_to_dropbox!
-    UploadWorker.perform_async(self.id)
-  end
-
   def user
     self.feed.user
   end
 
   def upload?
     self.upload_status == 'pending' || self.upload_status == 'waiting to retry'
+  end
+
+  def upload_to_dropbox!
+    UploadWorker.perform_async(self.id)
+  end
+
+  # =================================
+  # Upon Create
+  # =================================
+
+  def post_save
+    if status.changed? &&
+       status == "downloaded"
+      self.upload_to_dropbox!
+      self.extract_metadata!
+    end
   end
 
 end

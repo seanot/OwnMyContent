@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 1.2'
 # Sidekiq will use Redis for background jobs
 gem 'sidekiq'
 gem 'redis'
+gem 'sinatra', require: false
+gem 'slim'
 
 
 group :doc do
@@ -57,6 +59,7 @@ gem 'omniauth'
 gem 'omniauth-dropbox-oauth2'
 
 gem 'ruby-mp3info'
+
 
 
 # Use ActiveModel has_secure_password

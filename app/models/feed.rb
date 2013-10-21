@@ -2,7 +2,7 @@ class Feed < ActiveRecord::Base
   belongs_to :user
   has_many :enclosures
 
-  after_save :parse_feed!
+  after_create :parse_feed!
 
   def server_path
     "#{self.user.server_path}/#{self.id}"

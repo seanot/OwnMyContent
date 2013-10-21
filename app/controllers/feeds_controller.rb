@@ -12,9 +12,9 @@ class FeedsController < ApplicationController
   end
 
   def create
-    feed_info = current_user.feeds.create(feed_params)
+    feed = current_user.feeds.create(feed_params)
 
-    redirect_to feed_path(feed_info)
+    redirect_to feed_path(feed)
   end
 
   def show

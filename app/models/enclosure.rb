@@ -88,15 +88,24 @@ class Enclosure < ActiveRecord::Base
     UploadWorker.perform_async(self.id)
   end
 
+  def delete_from_server!
+    File.delete(self.server_path)
+  end
+
   # =================================
   # Upon Create
   # =================================
 
   def post_save
-    if status.changed? &&
-       status == "downloaded"
-      self.upload_to_dropbox!
-      self.extract_metadata!
+    if self.upload_status_changed?
+      if upload_status == "pending"
+        self.upload_to_dropbox!
+      elsif upload_status == "started"
+        self.extract_metadata!
+      elsif upload_status == "complete"
+        puts "Enclosure #{self.id} completed upload; time to delete from the server."
+        # self.delete_from_server!
+      end
     end
   end
 

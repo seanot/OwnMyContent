@@ -12,28 +12,9 @@ class FeedsController < ApplicationController
   end
 
   def create
-    feed_info = current_user.feeds.create(feed_params)
-    xml = open(feed_params[:url])
-    feed = FeedzirraPodcast::Parser::Podcast.parse(xml)
-    feed_info.update_attribute(:title, feed.title)
+    feed = current_user.feeds.create(feed_params)
 
-    feed.items.each do |i|
-      url = i.enclosure.url
-      @url = url
-
-      if url
-        feed_info.enclosures.create({ url: url})
-
-      end
-    end
-
-    feed_info.enclosures.each do |enc|
-      enc.save_to_server
-      enc.extract_metadata
-      enc.upload_to_dropbox!
-    end
-
-    redirect_to feed_path(feed_info)
+    redirect_to feed_path(feed)
   end
 
   def show

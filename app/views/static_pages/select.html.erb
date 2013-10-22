@@ -4,6 +4,6 @@
 <% end %>
 
 <h1>All Feeds</h1>
-<% @active_feeds.each do |feed| %>
+<% Feed.active.each do |feed| %>
   <%= feed.inspect %>
 <% end %>

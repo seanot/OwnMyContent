@@ -1,2 +1,14 @@
-<h1>StaticPages#select</h1>
-<p>Find me in app/views/static_pages/select.html.erb</p>
+<h1>Active Feeds</h1>
+<% @active.each do |feed| %>
+  <%= feed.title %> <br>
+<% end %>
+<br>
+<h1>New Feeds</h1>
+<% @fresh.each do |feed| %>
+  <%= feed.title %> <br>
+<% end %>
+<br>
+<h1>Completed Feeds</h1>
+<% @complete.each do |feed| %>
+  <%= feed.title %> <br>
+<% end %>

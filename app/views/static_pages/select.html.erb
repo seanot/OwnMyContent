@@ -1,14 +1,14 @@
 <h1>Active Feeds</h1>
-<% Feed.active.each do |feed| %>
+<% @active.each do |feed| %>
   <%= feed.title %> <br>
 <% end %>
 <br>
 <h1>New Feeds</h1>
-<% Feed.fresh.each do |feed| %>
+<% @fresh.each do |feed| %>
   <%= feed.title %> <br>
 <% end %>
 <br>
 <h1>Completed Feeds</h1>
-<% Feed.complete.each do |feed| %>
+<% @complete.each do |feed| %>
   <%= feed.title %> <br>
 <% end %>

@@ -7,7 +7,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: own_my_content_development
-  pool: 5
+  pool: 25
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -16,10 +16,10 @@ test:
   adapter: postgresql
   encoding: unicode
   database: own_my_content_test
-  pool: 5
+  pool: 25
 
 production:
   adapter: postgresql
   encoding: unicode
   database: own_my_content_production
-  pool: 5
+  pool: 25

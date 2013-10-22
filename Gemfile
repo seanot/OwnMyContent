@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 1.2'
 # Sidekiq will use Redis for background jobs
 gem 'sidekiq'
 gem 'redis'
+gem 'sinatra', require: false
+gem 'slim'
 
 
 group :doc do
@@ -64,6 +66,7 @@ gem 'ruby-mp3info'
 
 #for using cron with sideqik
 gem 'whenever', :require => false
+
 
 
 # Use ActiveModel has_secure_password

@@ -27,11 +27,17 @@ gem 'jbuilder', '~> 1.2'
 # Sidekiq will use Redis for background jobs
 gem 'sidekiq'
 gem 'redis'
+gem 'sinatra', require: false
+gem 'slim'
 
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do
@@ -59,6 +65,10 @@ gem 'omniauth'
 gem 'omniauth-dropbox-oauth2'
 
 gem 'ruby-mp3info'
+
+#for using cron with sideqik
+gem 'whenever', :require => false
+
 
 
 # Use ActiveModel has_secure_password

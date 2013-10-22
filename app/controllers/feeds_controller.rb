@@ -4,7 +4,7 @@ require 'mp3info'
 class FeedsController < ApplicationController
 
   def index
-
+    @feed = Feed.new
   end
 
   def new

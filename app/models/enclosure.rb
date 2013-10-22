@@ -35,6 +35,10 @@ class Enclosure < ActiveRecord::Base
     info
   end
 
+  def update_status(msg)
+    self.update_attribute(:upload_status, msg)
+  end
+
   # =======================================
   # Download utilities
   # =====================================

@@ -6,7 +6,10 @@ class Enclosure < ActiveRecord::Base
   require 'fileutils'
 
 
-  after_create :save_to_server!
+  after_commit(on: :create) do
+    :save_to_server!
+  end
+
   after_save :post_save
 
   METADATA_FIELDS = [

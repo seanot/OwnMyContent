@@ -25,13 +25,9 @@ class DownloadWorker
   end
 
   def perform(enclosure_id)
-    begin
-      enc = Enclosure.find(enclosure_id)
-      unless enc.upload_status =~ /File Error*/
-        try_download(enc)
-      end
-    rescue ActiveRecord::RecordNotFound
-      puts "Postgres hasn't made #{enclosure_id} yet! Try a different one!"
+    enc = Enclosure.find(enclosure_id)
+    unless enc.upload_status =~ /File Error*/
+      try_download(enc)
     end
   end
 

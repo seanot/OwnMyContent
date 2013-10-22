@@ -1,8 +1,8 @@
+Project description:
+Own my stuff is a service for locating and archiving your user created media on the web.
+
 mp3 meta tag gem info:
 http://rdoc.info/github/moumar/ruby-mp3info/master/frames
-
-
-
 
 to start the cron jobs:
 whenever -w --set 'environment=development'

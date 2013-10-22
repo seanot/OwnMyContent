@@ -1,0 +1,56 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+@import "web-fonts";
+@import "compass/typography/links";
+@import "compass/css3/inline-block";
+$family: unquote("Karla");
+@import url("http://fonts.googleapis.com/css?family=#{$family}");
+
+.container {
+  float: left;
+  margin: 20px auto;
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px 20px 20px;
+  /*border: 1px dotted black;*/
+
+}
+
+.logo {
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(1);
+  -o-filter: grayscale(1);
+  -ms-filter: grayscale(1);
+  padding: 0px 0px 150px 0px;
+}
+
+body {
+  color: white;
+  font-family: $family;
+  font-size: 28px;
+  background: #6dd6a4;
+}
+
+a {
+  // color: #20714a;
+  @include link-colors(#20714a, #fff, #fff, #20714a, #fff);
+  @include hover-link;
+  -webkit-transition: all .3s linear;
+  // transition: all .3s linear;
+}
+
+.feeds {
+  font-size: 16px;
+}
+
+.body_text {
+  font-size: 16px;
+  padding: 0px 0px 0px 30px;
+}
+ 

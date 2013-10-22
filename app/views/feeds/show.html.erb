@@ -1,5 +1,8 @@
+<p><%= link_to "home", root_path  %></p>
+<p><%= link_to "see your feeds", feeds_path %></p>
+</br>
 <h3><%= @feed.title %></h3>
-<ul>
+<ul class="feeds">
 <% @enclosures.each do |enc| %>
   <li>
     <a href='<%= enc.url %>'>

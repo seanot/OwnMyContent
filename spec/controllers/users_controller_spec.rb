@@ -1,1 +1,5 @@
-users_controller_spec.rb
+require 'spec_helper'
+
+describe UsersController do
+
+end

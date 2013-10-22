@@ -1,0 +1,30 @@
+<div class="index_user_widget">
+  <% if current_user %>
+    <%= link_to "Sign out", logout_path, id: "sign_out" %>
+  </br>
+    <%= link_to "Your feeds", feeds_path %>
+  <% else %>
+    <%= link_to "Sign in with Dropbox", "/auth/dropbox_oauth2", id: "sign_in" %>
+  <% end %>
+</div>
+
+<div class="index_page">
+
+  <div class="logo">
+    <!-- <img src="/misc_stuff.png" alt="An awesome image" /> -->
+    <%= image_tag("misc_stuff.png", :alt => "logo") %>
+  </div>
+
+  <div class="index_title">
+    <p>Own Your Stuff!</p>
+  </div>
+
+  <div class="index_copy">
+    <p>Own My Stuff is a service for locating and archiving your user created media on the web.</p>
+  </div>
+
+  </br>
+  <div class="index_about">
+    <%= link_to "about our project", about_path %>
+  </div>
+</div>  

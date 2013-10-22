@@ -7,11 +7,6 @@ class FeedsController < ApplicationController
 
   end
 
-  def ttt
-
-  end
-
-
   def new
     @feed = Feed.new
   end

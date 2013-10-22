@@ -2,10 +2,10 @@ require 'sidekiq/web'
 
 OwnMyContent::Application.routes.draw do
 
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
-  get "static_pages/select"
+  get "/home" => "static_pages#home"
+  get "/help" => "static_pages#help"
+  get "/about" => "static_pages#about"
+  get "/select"=> "static_pages#static"
   root 'users#index'
   resources :feeds
 

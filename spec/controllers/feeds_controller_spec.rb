@@ -1,1 +1,0 @@
-feeds_controller_spec.rb

@@ -20,14 +20,18 @@ class DownloadWorker
       enc.update_status("File Error: #{e.to_s}")
     rescue Exception => e # This catches any uncaught errors.
       enc.update_status("Download Failed. Will retry.")
-      puts e  # for troubleshooting. probably remove before we ship.
+      raise "Retry: Download Failed"
     end
   end
 
   def perform(enclosure_id)
+    begin
     enc = Enclosure.find(enclosure_id)
-    unless enc.upload_status =~ /File Error*/
-      try_download(enc)
+      unless enc.upload_status =~ /File Error*/
+        try_download(enc)
+      end
+    rescue ActiveRecord::RecordNotFound
+      raise "Retry: PG Error"
     end
   end
 

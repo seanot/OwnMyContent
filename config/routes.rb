@@ -5,7 +5,7 @@ OwnMyContent::Application.routes.draw do
   get "/home" => "static_pages#home"
   get "/help" => "static_pages#help"
   get "/about" => "static_pages#about"
-  get "/select"=> "static_pages#static"
+  get "/select"=> "static_pages#select"
   root 'users#index'
   resources :feeds
 

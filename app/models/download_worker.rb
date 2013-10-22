@@ -1,6 +1,5 @@
 class DownloadWorker
   include Sidekiq::Worker
-  sidekiq_options :retry => false
 
   def download_enclosure!(enc)
     open(enc.server_path, 'wb') do |f|
@@ -19,15 +18,21 @@ class DownloadWorker
       enc.update_status("Waiting to Upload")
     rescue Errno::ENOENT => e
       enc.update_status("File Error: #{e.to_s}")
-    rescue Exception => e
+    rescue Exception => e # This catches any uncaught errors.
       enc.update_status("Download Failed. Will retry.")
       puts e  # for troubleshooting. probably remove before we ship.
     end
   end
 
   def perform(enclosure_id)
-    enc = Enclosure.find(enclosure_id)
-    try_download(enc)
+    begin
+      enc = Enclosure.find(enclosure_id)
+      unless enc.upload_status =~ /File Error*/
+        try_download(enc)
+      end
+    rescue ActiveRecord::RecordNotFound
+      puts "Postgres hasn't made #{enclosure_id} yet! Try a different one!"
+    end
   end
 
 end

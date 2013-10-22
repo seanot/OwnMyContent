@@ -1,6 +1,5 @@
 class UploadWorker
   include Sidekiq::Worker
-  sidekiq_options :retry => false
 
   def dbx_client(user)
     @client ||= DropboxClient.new(user.oauth_token)
@@ -34,7 +33,12 @@ class UploadWorker
   end
 
   def perform(enclosure_id)
-    upload_enclosure!(Enclosure.find(enclosure_id))
+    begin
+      upload_enclosure!(Enclosure.find(enclosure_id))
+    rescue Exception => e # This catches any other errors, so the status will get updated
+      enc.update_status("Upload failed. Will retry.")
+      puts e
+    end
   end
 
 end

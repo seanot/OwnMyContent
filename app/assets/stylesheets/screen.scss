@@ -6,14 +6,36 @@
 @import "compass/reset";
 @import "compass/css3";
 @import "web-fonts";
-@include web-font((Karla));
+@import "compass/typography/links";
+@import "compass/css3/inline-block";
+$family: unquote("Karla");
+@import url("http://fonts.googleapis.com/css?family=#{$family}");
+
+
+
+.container {
+  float: left;
+  margin: 20px auto;
+  width: 100;
+  padding: 200px 20px 20px 20px;
+  /*border: 1px dotted black;*/
+
+}
+
+body {
+  color: white;
+  font-family: $family;
+  font-size: 28px;
+  background: #6dd6a4;
+}
+
+a {
+  // color: #20714a;
+  @include link-colors(#20714a, #fff, #fff, #20714a, #fff);
+  @include hover-link;
+  -webkit-transition: all .3s linear;
+  // transition: all .3s linear;
+}
 
 
  
-body {
-  
-}
-
-#user-widget {
-  font-family: "Karla"
-}

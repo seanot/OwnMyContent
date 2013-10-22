@@ -17,26 +17,13 @@ describe 'Feed' do
     expect(page).to have_link('Sign out')
   end
 
+  context 'entering RSS url' do
+    before do
+      visit '/feeds/new'
+      enter_rss_feed
+    end
 
+  end
 
-  # it 'has a text box for entry of url' do
-  #   visit '/feeds/new'
-
-  #   expect(page).to have
-  # end
-
-  # describe 'the download process', type: :feature do
-  #   context 'with valid url entered' do
-  #     it 'should contain a valid url' do
-  #       visit '/feeds/new'
-  #       visit feeds_path
-  #       enter_rss_feed 'http://podcast.com/feed'
-
-  #       expect(page).to have_content('http://podcast.com/feed')
-
-  #     end
-
-  #   end
-  # end
 
 end

@@ -4,6 +4,11 @@ class Feed < ActiveRecord::Base
 
   after_create :parse_feed!
 
+  def self.active
+    # return all active feeds
+    Feed.where(status: "active")
+  end
+
   def server_path
     "#{self.user.server_path}/#{self.id}"
   end

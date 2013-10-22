@@ -1,6 +1,6 @@
 <h1>Your Feeds</h1>
 <ul class="feeds">
-  <%= current_user.feeds.each do |feed| %>
+  <% current_user.feeds.each do |feed| %>
     <li><%= link_to feed.title, feed_path(feed) %></li>
   <% end %>
 </ul>

@@ -1,0 +1,24 @@
+$inline-block-alignment: middle;
+@import "compass/css3/inline-block";
+
+.index_page {
+  text-align: center;
+}
+
+.index_title {
+  font-size: 72px;
+  // padding-bottom: 100px;
+  @include inline-block;
+}
+
+.index_user_widget {
+  // float: right;
+  // float: top;
+}
+
+.index_user_widget, .index_about {
+  font-size: 16px;
+}
+
+
+

@@ -1,7 +1,8 @@
-<%= link_to "see your feeds", feeds_path%>
-
-<%= form_for @feed, url: feeds_path do |f| %>
-<label for="url">Enter the RSS feed you want to save: </label>
-  <%= f.url_field 'url' %>
-  <%= f.submit 'submit, yo' %>
-<% end %>
+<p>Hello <%= current_user.name.split(' ').first %>,</p>
+</br>
+<p class="link">View your achived <%= link_to "RSS feeds", feeds_path %> or choose from your <%= link_to "Soundcloud", 'http://www.soundcloud.com', :target => "_blank" %>, <%= link_to "Instagram", 'http://www.instagram.com',:target => "_blank" %>, or 
+<%= link_to "WordPress", 'http://www.wordpress.com', :target => "_blank" %> accounts.</p>
+</br>
+<p><%= render "rss_input_field" %></p>
+</br>
+<p class="small_text"><%= link_to "Home", root_path  %></p>

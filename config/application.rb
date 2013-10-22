@@ -6,6 +6,8 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+require "sass-rails"
+require "compass-rails"
 
 # Changes factories directory to accomodate rspec.
 # config.generators do |g|

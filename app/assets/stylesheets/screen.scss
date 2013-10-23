@@ -5,29 +5,19 @@
 
 @import "compass/reset";
 @import "compass/css3";
-@import "web-fonts";
 @import "compass/typography/links";
 @import "compass/css3/inline-block";
-$family: unquote("Karla");
+$family: unquote("Lora");
 @import url("http://fonts.googleapis.com/css?family=#{$family}");
 
 .container {
   float: left;
   margin: 20px auto;
-  width: 100%;
+  width: 85%;
   height: 100%;
   padding: 20px 20px 20px 20px;
   /*border: 1px dotted black;*/
 
-}
-
-.logo {
-  filter: grayscale(1);
-  -webkit-filter: grayscale(1);
-  -moz-filter: grayscale(1);
-  -o-filter: grayscale(1);
-  -ms-filter: grayscale(1);
-  padding: 0px 0px 150px 0px;
 }
 
 body {
@@ -42,7 +32,16 @@ a {
   @include link-colors(#20714a, #fff, #fff, #20714a, #fff);
   @include hover-link;
   -webkit-transition: all .3s linear;
+  text-decoration: none;
   // transition: all .3s linear;
+}
+
+#feed_url {
+  // background: url('app/assets/images/input_boxes.gif') no-repeat 0 -58px;
+  // width: 241px;
+  // height: 20px;
+  // padding: 0px 0px 5px 0px;
+  // border: none;
 }
 
 .feeds {
@@ -51,6 +50,25 @@ a {
 
 .body_text {
   font-size: 16px;
-  padding: 0px 0px 0px 30px;
+  padding: 0px 0px 0px 0px;
+}
+
+.small_text {
+  font-size: 14px;
+  // padding: 0px 0px 0px 30px;
+}
+
+.index_page {
+  text-align: center;
+}
+
+.index_title {
+  font-size: 72px;
+  // padding-bottom: 100px;
+}
+
+.index_user_widget, .index_about {
+  font-size: 16px;
 }
  
+

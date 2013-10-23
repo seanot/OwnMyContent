@@ -18,7 +18,7 @@ class FeedsController < ApplicationController
 
   def show
     @feed = Feed.find(params[:id])
-    @enclosures = @feed.enclosures
+    @enclosures = @feed.enclosures.paginate(:page => params[:page], :per_page => 30)
 
 
     # When we start creating directories for user files,

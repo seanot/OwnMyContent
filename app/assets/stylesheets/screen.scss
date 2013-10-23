@@ -11,8 +11,7 @@ $family: unquote("Lora");
 @import url("http://fonts.googleapis.com/css?family=#{$family}");
 
 .container {
-  float: left;
-  margin: 20px auto;
+  margin: 50px auto;
   width: 85%;
   height: 100%;
   padding: 20px 20px 20px 20px;
@@ -69,6 +68,22 @@ a {
 
 .index_user_widget, .index_about {
   font-size: 16px;
+}
+
+.index_user_widget {
+  padding: 20px;
+}
+
+.top_nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 5px 0px;
+  width: 100%;
+  display: inline;
+  // text-align: center;
+  background-color: rgba(200,200,200,0.8);
+  box-shadow: inset 0px -2px 2px #aaa;
 }
  
 

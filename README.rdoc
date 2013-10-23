@@ -13,16 +13,17 @@ whenever -c
 statuses:
 
 for ENCLOSURES:
-STAGING - STARTED DOWNLOADING
-PENDING - FINSIHED DOWNLOADEING
-STARTED - STARTED UPLOAD
-COMPLETE - FINISHED UPLOADING
-WAITING TO RETRY - for cron to retry
+Downloading                   - STARTED DOWNLOADING
+Waiting to Upload             - FINSIHED DOWNLOADEING
+Uploading                     - STARTED UPLOAD
+Complete                      - FINISHED UPLOADING
+Download Failed. Will retry.  - WAITING FOR RETRY DOWNLOAD
+Upload failed. Will retry.    - WAITING FOR RETRY UPLOAD
 
 for FEEDS:
-FRESH
-ACTIVE
-COMPLETE
+fresh
+active
+complete
 
 ======
 

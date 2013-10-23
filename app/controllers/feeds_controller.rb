@@ -24,7 +24,7 @@ class FeedsController < ApplicationController
     if feed
       feed.parse_feed!
     else
-      feed = current_user.feeds.find_or_create_by(feed_params)
+      feed = current_user.feeds.create(feed_params)
     end
     redirect_to feed_path(feed)
   end

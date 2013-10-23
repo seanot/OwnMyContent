@@ -35,6 +35,10 @@ class Enclosure < ActiveRecord::Base
     info
   end
 
+  def update_status(msg)
+    self.update_attribute(:upload_status, msg)
+  end
+
   # =======================================
   # Download utilities
   # =====================================
@@ -85,10 +89,6 @@ class Enclosure < ActiveRecord::Base
     self.feed.user
   end
 
-  def upload?
-    self.upload_status == 'pending' || self.upload_status == 'waiting to retry'
-  end
-
   def upload_to_dropbox!
     UploadWorker.perform_async(self.id)
   end
@@ -103,11 +103,11 @@ class Enclosure < ActiveRecord::Base
 
   def post_save
     if self.upload_status_changed?
-      if upload_status == "pending"
+      if upload_status == "Waiting to Upload"
         self.upload_to_dropbox!
-      elsif upload_status == "started"
+      elsif upload_status == "Uploading"
         self.extract_metadata!
-      elsif upload_status == "complete"
+      elsif upload_status == "Complete"
         self.delete_from_server!
       end
     end

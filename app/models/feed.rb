@@ -3,7 +3,35 @@ class Feed < ActiveRecord::Base
   has_many :enclosures
 
   after_create :parse_feed!
+  after_create :status_fresh
 
+  def status_fresh
+    self.status = "fresh"
+    self.save
+  end
+
+
+  # ==================
+  # Class methods
+  # ===================
+  def self.active
+    # return all active feeds
+    Feed.where(status: "active")
+  end
+
+  def self.complete
+    # return all completed feeds
+    Feed.where(status: "complete")
+  end
+
+  def self.fresh
+    # return all feeds that are new
+    Feed.where(status: "fresh")
+  end
+
+  # ==================
+  # Instance Methods
+  # ===================
   def server_path
     "#{self.user.server_path}/#{self.id}"
   end

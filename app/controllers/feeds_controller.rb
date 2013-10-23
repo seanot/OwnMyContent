@@ -20,7 +20,12 @@ class FeedsController < ApplicationController
   end
 
   def create
-    feed = current_user.feeds.create(feed_params)
+    feed = current_user.feeds.find_by(feed_params)
+    if feed
+      feed.parse_feed!
+    else
+      feed = current_user.feeds.create(feed_params)
+    end
     redirect_to feed_path(feed)
   end
 

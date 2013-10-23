@@ -63,7 +63,7 @@ class Feed < ActiveRecord::Base
     self.update_attribute(:title, xml.title)
     xml.items.each do |item|
       url = item.enclosure.url
-      self.enclosures.create({url: url}) if url
+      self.enclosures.find_or_create_by({url: url}) if url
     end
   end
 

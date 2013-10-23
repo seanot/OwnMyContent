@@ -25,9 +25,13 @@ class FeedsController < ApplicationController
   end
 
   def show
+    # if it's not your feed, don't show it and go to users feeds page instead
     @feed = Feed.find(params[:id])
-    @enclosures = @feed.enclosures
-
+    if current_user && @feed.user_id == current_user.id
+      @enclosures = @feed.enclosures
+    else
+      redirect_to :feeds
+    end
 
     # When we start creating directories for user files,
     # uncomment this and change the filepath to the

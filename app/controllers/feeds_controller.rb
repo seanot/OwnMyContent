@@ -12,7 +12,11 @@ class FeedsController < ApplicationController
   end
 
   def new
-    @feed = Feed.new
+     if current_user
+      @feed = Feed.new
+    else
+      redirect_to :root
+    end
   end
 
   def create

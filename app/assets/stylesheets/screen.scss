@@ -13,7 +13,7 @@ $family: unquote("Lora");
 .container {
   float: left;
   margin: 20px auto;
-  width: 100%;
+  width: 85%;
   height: 100%;
   padding: 20px 20px 20px 20px;
   /*border: 1px dotted black;*/
@@ -36,6 +36,14 @@ a {
   // transition: all .3s linear;
 }
 
+#feed_url {
+  // background: url('app/assets/images/input_boxes.gif') no-repeat 0 -58px;
+  // width: 241px;
+  // height: 20px;
+  // padding: 0px 0px 5px 0px;
+  // border: none;
+}
+
 .feeds {
   font-size: 16px;
 }
@@ -47,7 +55,7 @@ a {
 
 .small_text {
   font-size: 14px;
-  padding: 0px 0px 0px 30px;
+  // padding: 0px 0px 0px 30px;
 }
 
 .index_page {

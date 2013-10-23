@@ -5,10 +5,7 @@ class Feed < ActiveRecord::Base
   after_create :parse_feed!
   after_create :status_fresh
 
-  def status_fresh
-    self.status = "fresh"
-    self.save
-  end
+
 
 
   # ==================
@@ -57,6 +54,11 @@ class Feed < ActiveRecord::Base
   # ===================
   def xml
     @feed ||= FeedzirraPodcast::Parser::Podcast.parse(open(self.url))
+  end
+
+  def status_fresh
+    self.status = "fresh"
+    self.save
   end
 
   def parse_feed!

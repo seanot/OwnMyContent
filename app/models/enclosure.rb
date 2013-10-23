@@ -1,6 +1,6 @@
 class Enclosure < ActiveRecord::Base
   belongs_to :feed
-  validates :url, presence: true
+  validates :url, presence: true, uniqueness: true
 
   require 'open-uri'
   require 'mp3info'

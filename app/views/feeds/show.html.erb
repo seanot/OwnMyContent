@@ -3,7 +3,7 @@
 </br>
 <h3><%= @feed.title %></h3>
 <ul class="feeds">
-<% @enclosures.each do |enc| %>
+<% @enclosures.sort.each do |enc| %>
   <li>
     <a href='<%= enc.url %>'>
       <%= enc.client_path %>

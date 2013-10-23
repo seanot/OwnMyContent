@@ -11,7 +11,7 @@ namespace :feed do
         percent_complete = total_completed/total_enclosures
         puts "Feed #{f.title} is #{percent_complete}% complete"
       end
-      puts "#{f.title} is an empty feed"
+      puts "#{f.title} is an feempty feed"
     end
   end
 

@@ -4,13 +4,12 @@ namespace :feed do
   task status_update: :environment do
 
     Feed.active.each do |f|
-      total_completed  = 0
-      total_incomplete = 0
-      total_enclosures = f.enclosures.count
-      f.enclosures.each do |e|
-        if e.
-        p "total enclosures: #{total_enclosures}"
-      end
+
+      total_completed  = f.enclosures.complete.count ||= 0
+      total_enclosures = f.enclosures.count ||= 0
+      total_incomplete = total_enclosures - total_completed
+      percent_complete = total_completed/total_enclosures
+      puts "Feed #{f.title} is #{percent_complete}% complete"
     end
   end
 

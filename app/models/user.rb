@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def client_path
-    ""
+    "Own-My-Stuff"
   end
 
 

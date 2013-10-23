@@ -10,6 +10,20 @@
       Status: <%= enc.upload_status %>
     <% end %>
   </li>
+<% if @enclosures.count == 0 %>
+  <p><%= 'The feed appears to be empty... currently, Own Your Stuff
+      accepts only RSS feeds containing podcasts in mp3 format.' %></p>
+<% else %>
+  <% @enclosures.sort.each do |enc| %>
+    <li>
+      <a href='<%= enc.url %>'>
+        <%= enc.client_path %>
+      </a>
+      <% if  enc.upload_status %>
+        Status: <%= enc.upload_status %>
+      <% end %>
+    </li>
+  <% end %>
 <% end %>
 </ul>
 <p class="digg_pagination"><%= will_paginate @enclosures %></p>

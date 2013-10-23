@@ -62,10 +62,9 @@ class Feed < ActiveRecord::Base
   def parse_feed!
     self.update_attribute(:title, xml.title)
     xml.items.each do |item|
-      self.enclosures.create({url: item.enclosure.url})
+      url = item.enclosure.url
+      self.enclosures.find_or_create_by({url: url}) if url
     end
   end
 
 end
-
-

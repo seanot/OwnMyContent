@@ -20,7 +20,7 @@ class DownloadWorker
       enc.update_status("File Error: #{e.to_s}")
     rescue Exception => e # This catches any uncaught errors.
       enc.update_status("Download Failed. Will retry.")
-      raise "Retry: Download Failed"
+      raise e, "Retry: Download Failed", e.backtrace
     end
   end
 
@@ -30,8 +30,8 @@ class DownloadWorker
       unless enc.upload_status =~ /File Error*/
         try_download(enc)
       end
-    rescue ActiveRecord::RecordNotFound
-      raise "Retry: PG Error"
+    rescue ActiveRecord::RecordNotFound => e
+      raise e, "Retry: PG Error", e.backtrace
     end
   end
 

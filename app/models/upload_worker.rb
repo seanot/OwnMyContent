@@ -17,10 +17,9 @@ class UploadWorker
     begin
       metadata = uploader.finish(enc.client_path)
       enc.update_status("Complete")
-
-    rescue ActiveRecord::ConnectionTimeoutError
+    rescue ActiveRecord::ConnectionTimeoutError => e
       enc.update_status("Upload failed. Will retry")
-      raise "Retry: ActiveRecord Error"
+      raise e, "Retry: ActiveRecord Error", e.backtrace
     end
   end
 
@@ -36,12 +35,12 @@ class UploadWorker
     begin
       enc = Enclosure.find(enclosure_id)
       upload_enclosure!(enc)
-    rescue Net::HTTPServiceUnavailable
+    rescue Net::HTTPServiceUnavailable => e
       enc.update_status("Upload failed. Will retry")
-      raise "Retry: DBX Connection failed"
+      raise e, "Retry: DBX Connection failed", e.backtrace
     rescue Exception => e # This catches any other errors, so the status will get updated
       enc.update_status("Upload failed. Will retry.")
-      raise "Retry: Other error: #{e}"
+      raise e
     end
   end
 

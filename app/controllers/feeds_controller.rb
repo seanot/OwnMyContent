@@ -13,7 +13,6 @@ class FeedsController < ApplicationController
 
   def create
     feed = current_user.feeds.create(feed_params)
-
     redirect_to feed_path(feed)
   end
 

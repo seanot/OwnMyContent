@@ -4,7 +4,11 @@ require 'mp3info'
 class FeedsController < ApplicationController
 
   def index
-    @feed = Feed.new
+    if current_user
+      @feed = Feed.new
+    else
+      redirect_to :root
+    end
   end
 
   def new

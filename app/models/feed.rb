@@ -3,6 +3,12 @@ class Feed < ActiveRecord::Base
   has_many :enclosures
 
   after_create :parse_feed!
+  after_create :status_fresh
+
+  def status_fresh
+    self.status = "fresh"
+    self.save
+  end
 
   def self.active
     # return all active feeds

@@ -10,9 +10,9 @@ class StaticPagesController < ApplicationController
 
   def select
     if current_user
-      @active   = Feed.active
-      @fresh    = Feed.fresh
-      @complete = Feed.complete
+      @active   = Feed.where(user_id: current_user.id).active
+      @fresh    = Feed.where(user_id: current_user.id).fresh
+      @complete = Feed.where(user_id: current_user.id).complete
     else
       redirect_to :root
     end

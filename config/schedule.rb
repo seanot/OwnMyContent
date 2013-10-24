@@ -15,6 +15,10 @@ every 1.minute do
     rake "enc:test"
 end
 
+every 15.minutes do
+    rake "feed:status_update"
+end
+
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"

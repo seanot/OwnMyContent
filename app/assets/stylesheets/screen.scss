@@ -35,6 +35,10 @@ a {
   // transition: all .3s linear;
 }
 
+ul {
+  list-style: circle inside;
+}
+
 #feed_url {
   // background: url('app/assets/images/input_boxes.gif') no-repeat 0 -58px;
   // width: 241px;
@@ -61,6 +65,15 @@ input {
 
 .current_user {
   font-size: 22px;
+}
+
+.about_title {
+  font-size: 42px;
+  margin-bottom: 0px; 
+}
+
+.body_title {
+  margin: 0px;
 }
 
 .body_text {

@@ -1,4 +1,9 @@
 <h3><%= @feed.title %></h3>
+<% if @feed.directories.any? %>
+  <button class='generate_directory' data-id='<%= @feed.id %>'>generate directory</button>
+<% else %>
+  <button class='generate_directory' data-id='<%= @feed.id %>'>regenerate directory</button>
+<% end %>
 </br>
 <ul class="feeds">
 <% if @enclosures.count == 0 %>

@@ -49,6 +49,7 @@ class FeedsController < ApplicationController
     end
     directory.save_to_server!(render_to_string :directory, layout: 'local')
     directory.update_attribute(:status, "Waiting to Upload")
+    render json: {msg: "Directory Created."}
   end
 
   private

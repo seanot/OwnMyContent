@@ -76,7 +76,7 @@ class Enclosure < ActiveRecord::Base
 
   def save_to_server!
     make_server_directory!
-    DownloadWorker.perform_async(self.id, 'enclosure')
+    DownloadWorker.perform_async(self.id)
   end
 
 
@@ -103,7 +103,7 @@ class Enclosure < ActiveRecord::Base
   end
 
   def upload_to_dropbox!
-    UploadWorker.perform_async(self.id)
+    UploadWorker.perform_async(self.id, 'enclosure')
   end
 
   def delete_from_server!

@@ -34,6 +34,9 @@ class FeedsController < ApplicationController
     @feed = Feed.includes(:enclosures, :directories).find(params[:id])
     if current_user && @feed.user_id == current_user.id
       @enclosures = @feed.enclosures.paginate(page: params[:page], per_page: 10)
+      if request.xhr?
+        render :show, layout: false
+      end
     else
       redirect_to :feeds
     end

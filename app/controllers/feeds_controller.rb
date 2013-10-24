@@ -31,7 +31,7 @@ class FeedsController < ApplicationController
 
   def show
     # if it's not your feed, don't show it and go to users feeds page instead
-    @feed = Feed.find(params[:id])
+    @feed = Feed.includes(:enclosures, :directories).find(params[:id])
     if current_user && @feed.user_id == current_user.id
       @enclosures = @feed.enclosures.paginate(page: params[:page], per_page: 10)
     else
@@ -42,10 +42,13 @@ class FeedsController < ApplicationController
   def local_directory
     @feed = Feed.includes(:enclosures).find(params[:id])
     @enclosures = @feed.enclosures
-    directory = @feed.directories.create
+    if @feed.directories.any?
+      directory = @feed.directories.first
+    else
+      directory = @feed.directories.create
+    end
     directory.save_to_server!(render_to_string :directory, layout: 'local')
     directory.update_attribute(:status, "Waiting to Upload")
-    render :directory
   end
 
   private

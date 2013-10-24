@@ -9,7 +9,7 @@ OwnMyContent::Application.routes.draw do
   root 'users#index'
   resources :feeds
 
-  get "/local/:id" => "feeds#local_directory"
+  post "/local" => "feeds#local_directory"
 
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"

@@ -79,6 +79,18 @@ class Enclosure < ActiveRecord::Base
     DownloadWorker.perform_async(self.id, 'enclosure')
   end
 
+
+  # ==================
+  # Class methods
+  # ===================
+
+
+  def self.complete
+    # return all completed enclosures
+    Enclosure.where(upload_status: "Complete")
+  end
+
+
   # =================================
   # Upload utilities
   # =================================

@@ -24,7 +24,7 @@ for FEEDS:
 fresh
 active
 complete
-
+empty    (no enclosures)
 ======
 
 

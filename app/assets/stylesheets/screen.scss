@@ -47,8 +47,12 @@ a {
   font-size: 16px;
 }
 
-.feed_line, .new_feed, .your_feeds {
+.feed_line, .new_feed, .your_feeds, .about_title, .about_container {
   padding-left: 20px;
+}
+
+.about_container {
+  width: auto;
 }
 
 input {

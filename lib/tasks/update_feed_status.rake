@@ -8,20 +8,19 @@ namespace :feed do
       if total_enclosures > 0
         total_completed  = f.enclosures.complete.count ||= 0
         total_incomplete = total_enclosures - total_completed
-        percent_complete = (total_completed.to_f/total_enclosures)*100
-        p total_enclosures
-        p total_completed
-        p total_incomplete
-        p percent_complete
-        puts "Feed #{f.title} is #{percent_complete}% complete"
+        percent_complete = (total_completed*100/total_enclosures)
+        # puts "Feed #{f.title} is #{percent_complete}% complete"
         f.percent_complete = percent_complete
-
+        if percent_complete == 100
+          f.status="complete"
+        else
+          f.status="active"
+        end
       else
       f.status = "empty"
-      puts "#{f.title} is an empty feed"
+      # puts "#{f.title} is an empty feed"
       end
             f.save
-
     end
   end
 end

@@ -15,7 +15,7 @@ class UploadWorker
 
   def finish_upload(enc, uploader)
     begin
-      metadata = uploader.finish(enc.client_path)
+      metadata = uploader.finish(enc.client_path, true)
       enc.update_status("Complete")
     rescue ActiveRecord::ConnectionTimeoutError => e
       enc.update_status("Upload failed. Will retry.")

@@ -3,11 +3,26 @@
 <head>
   <title>OwnMyContent</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", "http://yui.yahooapis.com/pure/0.3.0/pure-min.css" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="container">
+  <div class="index_user_widget">
+    <% if current_user %>
+      <p class="current_user">Hello <%= current_user.name.split(' ').first %>,</p>
+      <%= link_to "your feeds", feeds_path %>
+    </br>
+      <%= link_to "add a feed", new_feed_path %>
+    </br>
+      <%= link_to "sign out", logout_path, id: "sign_out" %>
+    </br>
+      <%= link_to "your dropbox", 'http://www.dropbox.com/home', :target => '_blank' %>
+    <% else %>
+      <%= link_to "Sign in with Dropbox", "/auth/dropbox_oauth2", id: "sign_in" %>
+    <% end %>
+  </div>
   <%= yield %>
 </div>
 </body>

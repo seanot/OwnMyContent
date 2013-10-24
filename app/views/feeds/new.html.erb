@@ -1,8 +1,13 @@
-<p>Hello <%= current_user.name.split(' ').first %>,</p>
-</br>
 <p class="feed_line">View your achived <%= link_to "RSS feeds", feeds_path %> or choose from your <%= link_to "Soundcloud", 'http://www.soundcloud.com', :target => "_blank" %>, <%= link_to "Instagram", 'http://www.instagram.com',:target => "_blank" %>, or 
 <%= link_to "WordPress", 'http://www.wordpress.com', :target => "_blank" %> accounts.</p>
 </br>
-<p><%= render "rss_input_field" %></p>
-</br>
-<p class="small_text"><%= link_to "Home", root_path  %></p>
+<!-- <fieldset> -->
+  <!-- <legend>enter a rss feed to download</legend> -->
+  <%= form_for @feed, url: feeds_path do |f| %>
+  <label for="url">RSS: </label>
+    <%= f.url_field 'url' %>
+    <%= f.submit 'submit, yo' %>
+  <% end %>
+<!-- </fieldset> -->
+
+

@@ -76,7 +76,7 @@ class Enclosure < ActiveRecord::Base
 
   def save_to_server!
     make_server_directory!
-    DownloadWorker.perform_async(self.id)
+    DownloadWorker.perform_async(self.id, 'enclosure')
   end
 
 

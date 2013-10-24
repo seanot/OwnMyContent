@@ -1,6 +1,7 @@
 class Feed < ActiveRecord::Base
   belongs_to :user
   has_many :enclosures
+  has_many :directories
 
   after_create :parse_feed!
   after_create :status_fresh

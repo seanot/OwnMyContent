@@ -1,3 +1,4 @@
+<div class='feed_info'>
 <div class='feed_header'>
   <h3><%= @feed.title %></h3>
   <% if @feed.directories.any? %>
@@ -23,3 +24,17 @@
 <% end %>
 </ul>
 <p class='digg_pagination'><%= will_paginate @enclosures %></p>
+</div>
+
+
+<script type='text/javascript'>
+ function update(){ 
+     $.get('<%= feed_path(@feed.id) %>', function(data){
+         $('.feed_info').replaceWith(data);
+     });
+  }
+
+  $(document).ready(function($){
+    window.setInterval('update()', 10*1000);
+  });
+</script>

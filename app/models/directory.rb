@@ -3,6 +3,8 @@ class Directory < ActiveRecord::Base
   after_save :post_save
 
   def server_path
+    p self
+    p self.feed
     "#{self.feed.server_path}/directory.html"
   end
 
@@ -10,7 +12,13 @@ class Directory < ActiveRecord::Base
     "#{self.feed.client_path}/directory.html"
   end
 
+  def make_server_directory!
+    directory_name = self.feed.server_path
+    FileUtils.mkdir_p(directory_name) unless File.exists?(directory_name)
+  end
+
   def save_to_server!(html)
+    make_server_directory!
     open(self.server_path, 'wb') do |f|
       f << (html)
     end

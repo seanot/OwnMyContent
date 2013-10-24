@@ -1,4 +1,4 @@
-<h3><%= @feed.title %></h3>
+<h3 class="feed_title"><%= @feed.title %></h3>
 </br>
 <ul class="feeds">
 <% if @enclosures.count == 0 %>
@@ -17,4 +17,4 @@
   <% end %>
 <% end %>
 </ul>
-<p class='.digg_pagination'><%= will_paginate @enclosures %></p>
+<p class='digg_pagination'><%= will_paginate @enclosures %></p>

@@ -31,9 +31,13 @@ class UploadWorker
     finish_upload(enc, uploader)
   end
 
-  def perform(enclosure_id)
+  def perform(enclosure_id, type)
     begin
-      enc = Enclosure.find(enclosure_id)
+      if type == 'enclosure'
+        enc = Enclosure.find(enclosure_id)
+      elsif type == 'directory'
+        enc = Directory.find(enclosure_id)
+      end
       upload_enclosure!(enc)
     rescue Net::HTTPServiceUnavailable => e
       enc.update_status("Upload failed. Will retry")

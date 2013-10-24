@@ -1,7 +1,5 @@
-<p><%= link_to "home", root_path  %></p>
-<p><%= link_to "see your feeds", feeds_path %></p>
-</br>
 <h3><%= @feed.title %></h3>
+</br>
 <ul class="feeds">
 <% @enclosures.each do |enc| %>
   <li>
@@ -12,5 +10,21 @@
       Status: <%= enc.upload_status %>
     <% end %>
   </li>
+<% if @enclosures.count == 0 %>
+  <p><%= 'The feed appears to be empty... currently, Own Your Stuff
+      accepts only RSS feeds containing podcasts in mp3 format.' %></p>
+<% else %>
+  <% @enclosures.sort.each do |enc| %>
+    <li>
+      <a href='<%= enc.url %>'>
+        <%= enc.client_path %>
+      </a>
+      <% if  enc.upload_status %>
+        Status: <%= enc.upload_status %>
+      <% end %>
+    </li>
+  <% end %>
+<% end %>
 <% end %>
 </ul>
+<p><%= will_paginate @enclosures %></p>

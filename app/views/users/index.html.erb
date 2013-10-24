@@ -1,27 +1,31 @@
 
 <div class="index_page">
-
-  <div class="logo">
-    <!-- <img src="/misc_stuff.png" alt="An awesome image" /> -->
-    <%= image_tag("misc_stuff.png", :alt => "logo") %>
-  </div>
-  <div class="index_user_widget">
-    <% if current_user %>
-      <%= link_to "Sign out", logout_path, id: "sign_out" %>
-    </br>
-      <%= link_to "Your feeds", feeds_path %>
-    <% else %>
-      <%= link_to "Sign in with Dropbox", "/auth/dropbox_oauth2", id: "sign_in" %>
-    <% end %>
-  </div>
-  </br>
-  </br>
   <div class="index_title">
     <p>Own Your Stuff!</p>
   </div>
 
   <div class="index_copy">
     <p>Own My Stuff is a service for locating and archiving your user created media on the web.</p>
+  </div>
+
+  <div>
+  <%= image_tag("rss-icon.png", :alt => "sumshit", :width => "100", :class => "rss-icon") %>
+  <%= image_tag("arrow.png", :alt => "sumshit", :width => "50", :class => "arrow-icon") %>
+  <%= image_tag("dropbox.png", :alt => "sumshit2", :width => "100", :class => "dropbox-icon") %>
+  <%= image_tag("arrow.png", :alt => "sumshit", :width => "50", :class => "arrow-icon") %>
+  <%= image_tag("smiley-face.png", :alt => "sumshit", :width => "100", :class => "smiley-icon") %>
+  </div>
+
+  <div>
+    <div class="text1">
+      enter a RSS feed
+    </div>
+    <div class="text2">
+      we upload to Dropbox
+    </div>
+    <div class="text3">
+      you now own your stuff!
+    </div>
   </div>
 
   </br>

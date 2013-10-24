@@ -32,6 +32,8 @@ class FeedsController < ApplicationController
   def show
     # if it's not your feed, don't show it and go to users feeds page instead
     @feed = Feed.find(params[:id])
+    @enclosures = @feed.enclosures.paginate(:page => params[:page], :per_page => 30)
+
     if current_user && @feed.user_id == current_user.id
       @enclosures = @feed.enclosures
     else

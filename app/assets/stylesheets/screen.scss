@@ -11,10 +11,9 @@ $family: unquote("Lora");
 @import url("http://fonts.googleapis.com/css?family=#{$family}");
 
 .container {
-  float: left;
-  margin: 20px auto;
-  width: 85%;
-  height: 100%;
+  margin: 50px auto;
+  width: auto;
+  height: auto;
   padding: 20px 20px 20px 20px;
   /*border: 1px dotted black;*/
 
@@ -48,6 +47,18 @@ a {
   font-size: 16px;
 }
 
+.feed_line, .new_feed, .your_feeds {
+  padding-left: 20px;
+}
+
+input {
+  font-size: 10px;
+}
+
+.current_user {
+  font-size: 22px;
+}
+
 .body_text {
   font-size: 16px;
   padding: 0px 0px 0px 0px;
@@ -60,6 +71,7 @@ a {
 
 .index_page {
   text-align: center;
+  height: 500px;
 }
 
 .index_title {
@@ -70,5 +82,35 @@ a {
 .index_user_widget, .index_about {
   font-size: 16px;
 }
+
+.index_user_widget {
+  padding: 20px;
+}
+
+.top_nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 5px 0px;
+  width: 100%;
+  display: inline;
+  // text-align: center;
+  background-color: rgba(200,200,200,0.8);
+  box-shadow: inset 0px -2px 2px #aaa;
+}
  
+ .rss-icon, .arrow-icon, .dropbox-icon {
+  padding: 50px 50px 0px 0px;
+ }
+
+ .text1, .text2, .text3 {
+  display: inline-block;
+  width: 100px;
+  padding: 20px 75px 0px 75px;
+  font-size: 17px;
+ }
+
+ .arrow-icon {
+  padding: 0px 40px 35px 0px;
+ }
 

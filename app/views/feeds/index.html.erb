@@ -1,13 +1,9 @@
-<h1>Your Feeds</h1>
+<p class="your_feeds">your feeds</p>
+
 <ul class="feeds">
   <% current_user.feeds.each do |feed| %>
     <li><%= link_to feed.title, feed_path(feed) %></li>
   <% end %>
 </ul>
-
-</br>
-<p class="body_text"><%= link_to "add a new feed", new_feed_path  %></p>
-<p class="body_text"><%= link_to "home", root_path  %></p>
-
 
 

@@ -86,6 +86,9 @@ GEM
     feedzirra-podcast (0.0.9)
       feedzirra
       periodic (~> 1.2.2)
+    font-awesome-sass-rails (3.0.2.2)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     fssm (0.2.10)
     hashie (2.0.5)
     hike (1.2.3)
@@ -243,6 +246,7 @@ GEM
     whenever (0.8.4)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
+    will_paginate (3.0.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -259,6 +263,7 @@ DEPENDENCIES
   dropbox-sdk
   factory_girl_rails
   feedzirra-podcast (~> 0.0.9)
+  font-awesome-sass-rails (~> 3.0.2.2)
   jbuilder (~> 1.2)
   jquery-rails
   omniauth
@@ -280,3 +285,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   whenever
+  will_paginate (~> 3.0.5)

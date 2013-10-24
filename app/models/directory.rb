@@ -3,7 +3,7 @@ class Directory < ActiveRecord::Base
   after_save :post_save
 
   def server_path
-    "#{self.feed.path}/directory.html"
+    "#{self.feed.server_path}/directory.html"
   end
 
   def client_path
@@ -11,7 +11,7 @@ class Directory < ActiveRecord::Base
   end
 
   def save_to_server!(html)
-    open(self.path, 'wb') do |f|
+    open(self.server_path, 'wb') do |f|
       f << (html)
     end
   end
@@ -33,7 +33,7 @@ class Directory < ActiveRecord::Base
   end
 
   def upload_to_dropbox!
-    UploadWorker.perform_async(self.id)
+    UploadWorker.perform_async(self.id, 'directory')
   end
 
   def delete_from_server!
@@ -46,9 +46,9 @@ class Directory < ActiveRecord::Base
 
   def post_save
     if self.status_changed?
-      if upload_status == "Waiting to Upload"
+      if status == "Waiting to Upload"
         self.upload_to_dropbox!
-      elsif upload_status == "Complete"
+      elsif status == "Complete"
         self.delete_from_server!
       end
     end

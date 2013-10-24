@@ -30,11 +30,11 @@
 <script type='text/javascript'>
  function update(){ 
      $.get('<%= feed_path(@feed.id) %>', function(data){
-         $('.feed_info').replaceWith(data);
+         // $('.feed_info').replaceWith(data);
      });
   }
 
   $(document).ready(function($){
-    window.setInterval('update()', 10*1000);
+    // window.setInterval('update()', 10*1000);
   });
 </script>

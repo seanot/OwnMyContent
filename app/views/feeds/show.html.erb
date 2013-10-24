@@ -1,10 +1,10 @@
-<h3><%= @feed.title %></h3>
-<% if @feed.directories.any? %>
-  <button class='generate_directory' data-id='<%= @feed.id %>'>generate directory</button>
-<% else %>
-  <button class='generate_directory' data-id='<%= @feed.id %>'>regenerate directory</button>
-<% end %>
-</br>
+<div class='feed_header'>
+  <h3><%= @feed.title %></h3>
+  <% if @feed.directories.any? %>
+    <% button_text_prefix = 're' %>
+  <% end %>
+    <button class='generate_directory' data-id='<%= @feed.id %>'><%= button_text_prefix %>generate directory</button>
+</div>
 <ul class="feeds">
 <% if @enclosures.count == 0 %>
   <p><%= 'The feed appears to be empty... currently, Own Your Stuff

@@ -11,7 +11,7 @@
 <div class="container">
   <div class="index_user_widget">
     <% if current_user %>
-      <p>Hello <%= current_user.name.split(' ').first %>,</p>
+      <p class="current_user">Hello <%= current_user.name.split(' ').first %>,</p>
       <%= link_to "your feeds", feeds_path %>
     </br>
       <%= link_to "add a feed", new_feed_path %>

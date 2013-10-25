@@ -51,12 +51,17 @@ ul {
   font-size: 16px;
 }
 
-.feed_line, .new_feed, .your_feeds, .about_title, .about_container, .feed_title {
+.feed_line, .new_feed, .your_feeds, .about_title, .about_container, .feed_title, .feed_header, .pagination {
   padding-left: 20px;
 }
 
 .about_container {
   width: auto;
+}
+
+.generate_directory, .new_feed {
+  // width: 100px;
+  font-size: 18px;
 }
 
 input {

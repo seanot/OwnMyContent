@@ -13,14 +13,15 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
+/tmp/cache
+/tmp/sessions
+/tmp/sockets
 .DS_Store
 .env
 
 sean.rake
 dump.rdb
 
-/public/user_content
 /config/cron_log.log
 
 /config/cron.log

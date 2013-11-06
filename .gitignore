@@ -22,7 +22,6 @@
 sean.rake
 dump.rdb
 
-# /public/user_content
 /config/cron_log.log
 
 /config/cron.log

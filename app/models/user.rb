@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   end
 
   def server_path
-    "public/user_content/#{self.id}"
+    # "public/user_content/#{self.id}"
+    "tmp/user_content/#{self.id}"
   end
 
   def client_path

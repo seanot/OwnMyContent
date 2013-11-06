@@ -1,5 +1,5 @@
 # config/unicorn.rb
-worker_processes 3
+worker_processes 2
 timeout 30
 preload_app true
 
@@ -23,7 +23,4 @@ after_fork do |server, worker|
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.establish_connection
 
-  Sidekiq.configure_client do |config|
-    config.redis = { size: 1, namespace: 'sidekiq' }
-  end
 end

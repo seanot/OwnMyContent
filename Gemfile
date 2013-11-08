@@ -38,6 +38,8 @@ gem 'redis'
 gem 'sinatra', require: false
 gem 'slim'
 
+# AWS S3 is where we cache files in preparation for upload to Dropbox
+gem 'aws-s3', '~> 0.6.3'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

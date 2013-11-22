@@ -13,6 +13,12 @@ describe 'DownloadWorker' do
 		before do
 			# Do not create enclosures for feed
 			Feed.any_instance.stub(:parse_feed!) { true }
+
+			# Don't try to download enclosure automatically
+			Enclosure.any_instance.stub(:save_to_server!)
+
+			# Don't try to create directories
+			FileUtils.stub(:mkdir_p)
 		end
 
 		context 'given an enclosure exists' do
@@ -34,5 +40,24 @@ describe 'DownloadWorker' do
 
 	end
 
+	describe '#try_download' do
+		context 'when download is successful'
+
+		context "when file can't be saved" do
+			before do
+				# Throw a file error
+				File.stub(:open) { raise Errno::ENOENT }
+
+				# Do not create enclosures for feed
+				Feed.any_instance.stub(:parse_feed!) { true }
+		
+			end
+
+			it 'sets enclosure status to File Error' do
+			end
+		end
+
+		context "when other errors are thrown"
+	end
 
 end

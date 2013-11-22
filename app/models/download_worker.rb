@@ -8,7 +8,7 @@ class DownloadWorker
   end
 
   def full_file(path)
-    open(path).read
+    Faraday.get(path)
   end
 
   def try_download(enc)

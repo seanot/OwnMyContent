@@ -36,7 +36,7 @@ gem 'sidekiq'
 gem 'redis'
 gem 'sinatra', require: false
 gem 'slim'
-
+gem 'faraday'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

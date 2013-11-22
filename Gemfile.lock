@@ -263,6 +263,7 @@ DEPENDENCIES
   dotenv-rails
   dropbox-sdk
   factory_girl_rails
+  faraday
   feedzirra-podcast (~> 0.0.9)
   font-awesome-sass-rails (~> 3.0.2.2)
   jbuilder (~> 1.2)

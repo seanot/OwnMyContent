@@ -2,7 +2,7 @@ class DownloadWorker
   include Sidekiq::Worker
 
   def download_enclosure!(enc)
-    open(enc.server_path, 'wb') do |f|
+    File.open(enc.server_path, 'wb') do |f|
       f << full_file(enc.url)
     end
   end

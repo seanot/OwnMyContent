@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'sqlite3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -35,7 +36,7 @@ gem 'sidekiq'
 gem 'redis'
 gem 'sinatra', require: false
 gem 'slim'
-
+gem 'faraday'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

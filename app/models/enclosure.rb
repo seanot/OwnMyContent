@@ -69,13 +69,12 @@ class Enclosure < ActiveRecord::Base
     end
   end
 
-  def make_server_directory!
-    directory_name = self.feed.server_path
-    FileUtils.mkdir_p(directory_name) unless File.exists?(directory_name)
-  end
+  # def make_server_directory!
+  #   directory_name = self.feed.server_path
+  #   FileUtils.mkdir_p(directory_name) unless File.exists?(directory_name)
+  # end
 
   def save_to_server!
-    make_server_directory!
     DownloadWorker.perform_async(self.id)
   end
 

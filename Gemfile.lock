@@ -274,6 +274,7 @@ PLATFORMS
 DEPENDENCIES
   bourbon (~> 3.1.8)
   capistrano (~> 3.0.0)
+  capistrano-bundler
   capistrano-rails (~> 1.1.0)
   capybara
   coffee-rails (~> 4.0.0)

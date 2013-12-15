@@ -7,14 +7,14 @@ describe 'Feed' do
     click_link 'Sign in with Dropbox'
     visit '/feeds/new'
 
-    expect(page).to have_link('see your feeds')
+    expect(page).to have_link('your feeds')
   end
 
   it 'should have link to sign out' do
     visit '/auth/dropbox_oauth2'
     visit '/feeds/new'
 
-    expect(page).to have_link('Sign out')
+    expect(page).to have_link('sign out')
   end
 
   context 'entering RSS url' do

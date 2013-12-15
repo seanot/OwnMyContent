@@ -7,6 +7,7 @@ gem 'rails', '4.0.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'sqlite3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -37,7 +38,7 @@ gem 'sidekiq'
 gem 'redis'
 gem 'sinatra', require: false
 gem 'slim'
-
+gem 'faraday'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -53,6 +54,11 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'coveralls', require: false
+end
+
+group :development do
+  # Use Capistrano for deployment
+  gem 'capistrano-rails', '~> 1.0.0'
 end
 
 group :production do
@@ -85,8 +91,6 @@ gem 'whenever', :require => false
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

@@ -1,9 +1,6 @@
 
 set :repo_url, 'https://github.com/seanot/OwnMyContent'
 set :branch, 'master'
-require "bundler/capistrano"
-require "rbenv/capistrano"
-require 'sidekiq/capistrano'
 
 server "162.243.237.24", :web, :app, :db, primary: true
 

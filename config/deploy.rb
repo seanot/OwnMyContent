@@ -15,7 +15,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@github.com:gertig/reponame.git"
+set :repository, "git@github.com:seanot/OwnMyStuff.git"
 set :branch, "master"
 
 default_run_options[:pty] = true

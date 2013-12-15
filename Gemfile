@@ -56,6 +56,11 @@ group :development, :test do
   gem 'coveralls', require: false
 end
 
+group :development do
+  # Use Capistrano for deployment
+  gem 'capistrano-rails', '~> 1.0.0'
+end
+
 group :production do
   gem 'rails_12factor' # for heroku
   gem 'unicorn' # web server
@@ -86,8 +91,6 @@ gem 'whenever', :require => false
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

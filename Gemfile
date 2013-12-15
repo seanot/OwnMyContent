@@ -58,7 +58,8 @@ end
 
 group :development do
   # Use Capistrano for deployment
-  gem 'capistrano-rails', '~> 1.0.0'
+  gem 'capistrano', '~> 3.0.0'
+  gem 'capistrano-rails', '~> 1.1.0'
 end
 
 group :production do
